@@ -3,10 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Custom Video</title>
+	<script>
+		window.onload = function(){
+			var oVideo = document.getElementsByTagName('video')[0];
+			var oPlay = document.getElementById('btn-play-pause');
+			oVideo.onclick = oPlay.onclick= function(){
+				if(oVideo.paused){
+					oVideo.play();
+				}else{
+					oVideo.pause();
+				}
+			}
+			document.onkeydown = function(){
+				// alert(event.keyCode)
+				if(event.keyCode == 39){
+					oVideo.currentTime += 10;
+				}
+			}
+		}
+	</script>
 </head>
 <body>
-	<video>
+	<video width="300px">
 		<source src="./1.mp4">
 	</video>
+	<button id="btn-play-pause">播放／暂停</button>
+	<button id="next">快进</button>
 </body>
 </html>
