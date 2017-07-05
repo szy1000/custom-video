@@ -1,0 +1,33 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: #eee;
+}
+
+.videoBox{
+	position: relative;
+	margin: 100px auto 0;
+	width: 500px;
+	height: auto;
+}
+.videoBox video{
+	width: 100%;
+}
+
+.videoBox .controls{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 80px;
+	width: 100%;
+	line-height: 80px;
+	background-color: rgba(66,66,66,.6);
+}
+.videoBox .controls button{
+	border: none;
+}
+.videoBox .controls #btn-play-pause{
+	width: 40px;
+	height: 40px;
+	background-color: red
+}

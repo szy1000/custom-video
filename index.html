@@ -3,10 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Custom Video</title>
+	<link rel="stylesheet" href="./style.css">
 	<script>
 		window.onload = function(){
 			var oVideo = document.getElementsByTagName('video')[0];
 			var oPlay = document.getElementById('btn-play-pause');
+			var quickNext = document.getElementById('next');
+			var full = document.getElementById('full-screen');
 			oVideo.onclick = oPlay.onclick= function(){
 				if(oVideo.paused){
 					oVideo.play();
@@ -19,15 +22,42 @@
 				if(event.keyCode == 39){
 					oVideo.currentTime += 10;
 				}
+				if(event.keyCode == 37){
+					oVideo.currentTime -= 10;
+				}
+				if(event.keyCode == 32){
+					if(oVideo.paused){
+						oVideo.play();
+					}else{
+						oVideo.pause();
+					}
+				}
 			}
+			quickNext.onclick = function(){
+					oVideo.currentTime += 10;
+			}
+			full.addEventListener('click', function(){
+				if (oVideo.requestFullscreen) {
+			    oVideo.requestFullscreen();
+			  } else if (oVideo.mozRequestFullScreen) {
+			    oVideo.mozRequestFullScreen(); // Firefox
+			  } else if (oVideo.webkitRequestFullscreen) {
+			    oVideo.webkitRequestFullscreen(); // Chrome and Safari
+			  }
+			},false);
 		}
 	</script>
 </head>
 <body>
-	<video width="300px">
-		<source src="./1.mp4">
-	</video>
-	<button id="btn-play-pause">播放／暂停</button>
-	<button id="next">快进</button>
+	<div class="videoBox">
+		<video>
+			<source src="./1.mp4">
+		</video>
+		<div class="controls">
+			<button id="btn-play-pause">播放</button>
+			<button id="next">快进</button>
+			<button id="full-screen">全屏</button>
+		</div>
+	</div>
 </body>
 </html>
